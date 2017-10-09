@@ -53,5 +53,6 @@ function isValidCard(creditCard) {
 do {
   //Se pide al usuario el número de su tarjeta mediante un prompt
   var creditCard = prompt('Ingrese el número de su tarjeta de crédito:');
+  //Llama a la fución tomando creditCard como argumento
   isValidCard(creditCard);
 } while (creditCard === ''); //Si el campo es vacío vuelve a correr el bucle
