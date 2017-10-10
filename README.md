@@ -33,4 +33,4 @@ Sino &rarr; Alerta 'Tarjeta inválida' &rarr; centinel = false
 
 ## Diagrama de flujo
 
-![Con titulo](flowchart.jpeg "Diagrama de flujo")
+![Con titulo](assets/docs/flow-diagram-credit-card-validation.jpeg "Diagrama de flujo")
