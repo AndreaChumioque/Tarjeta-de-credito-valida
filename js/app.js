@@ -21,8 +21,9 @@ function isValidCard(creditCard) {
     if (creditCard[i] * 2 > 9)
       //Si el resultado es mayor que 9, se le resta 9 y entra a evenDigits mediante un push
       evenDigits.push(creditCard[i] * 2 - 9);
-    //De lo contrario, el resultado entra a evenDigits
-    else evenDigits.push(creditCard[i] * 2);
+    else
+      //De lo contrario, el resultado entra a evenDigits
+      evenDigits.push(creditCard[i] * 2);
   }
 
   //Recorrido de los dígitos impares del string creditCard
@@ -44,15 +45,32 @@ function isValidCard(creditCard) {
     //De lo contrario es false y la tarjeta NO es válida
   } else {
     centinel = false;
-    alert('Tarjeta de crédito inválida.')
+    alert('Tarjeta de crédito inválida.');
   }
   return centinel;
 }
 
 //Bucle para que no se pueda ingresar un campo vacío
 do {
-  //Se pide al usuario el número de su tarjeta mediante un prompt
-  var creditCard = prompt('Ingrese el número de su tarjeta de crédito:');
-  //Llama a la fución tomando creditCard como argumento
-  isValidCard(creditCard);
-} while (creditCard === ''); //Si el campo es vacío vuelve a correr el bucle
+  var centinel = false; //Se crea una variable centinel para realizar las validaciones
+  var creditCard = prompt('Ingrese el número de su tarjeta de crédito:');//Se pide al usuario el número de su tarjeta mediante un prompt
+  var digits = 0; //Se crea una variable para contar los dígitos
+
+  //Si creditCard es un string vacío, se muestra el mensaje 'No puede dejar este campo vacío'
+  if (creditCard === '') {
+    alert('No puede dejar este campo vacío.');
+  } else if (creditCard !== '') {
+    //Sino, recorre el string
+    for (var i = 0; i < creditCard.length; i++) {
+      if (creditCard.charCodeAt(i) >= 48 && creditCard.charCodeAt(i) <= 57) {
+        //Por cada caracter numérico digits aumenta en 1
+        digits += 1;
+      }
+    }
+    if (digits == 16 && creditCard.length == 16) { //Si creditCard tiene 16 caracteres y todos son numeros, centinel es true y se llama a la función
+      centinel = true;
+      isValidCard(creditCard);
+    } else //Sino, se muestra una alerta
+      alert('Por favor, ingrese 16 caracteres numéricos.');
+  }
+} while (centinel === false); //Si centinel es false vuelve a correr el bucle
